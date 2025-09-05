@@ -1,0 +1,31 @@
+LEVEL GOAL
+
+The password for the next level is stored in a hidden file in the inhere directory.
+
+Commands you may need to solve this level
+ls , cd , cat , file , du , find
+
+
+Theory:
+
+To traverse the directories, the “change directory” command exists: cd <path>.
+
+Interesting uses of the command are:
+
+cd .. goes to the parent directory
+cd / goes to the root directory
+cd ~ goes to the home directory (of the current user)
+
+
+A hidden file in Linux starts with a .. The "ls" command shows only non-hidden files. 
+However, with the "-a" flag it shows all files, specifically also the hidden files.
+
+The first two hidden entries in the directories stand for the current (.) and the parent 
+directory.
+
+SOLUTION:
+
+cd inhere
+ls -al
+cat .hidden
+
