@@ -1,0 +1,19 @@
+Level Goal
+
+The password for the next level is stored in a file called --spaces in this filename-- located in the home directory
+
+Commands you may need to solve this level
+ls , cd , cat , file , du , find
+
+Helpful Reading Material
+Google Search for “spaces in filename”
+
+SOLUTION:
+
+Escape every space using backslash key:
+OR we can surround names with spaces with quotes (single or double )
+to indicate that all of it belongs to the name for one file.
+
+dir
+cat file\ name\ with\ spaces
+OR cat "spaces in this filename"
