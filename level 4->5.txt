@@ -1,0 +1,60 @@
+Level Goal
+
+The password for the next level is stored in the only human-readable file in the inhere directory.
+Tip: if your terminal is messed up, try the “reset” command.
+
+Commands you may need to solve this level
+ls , cd , cat , file , du , find
+
+Theory:
+The file command gives us the type of data of the file.
+Some examples would be: ‘ELF’, ‘Perl script’, ‘ASCII text’, ‘data’ and more.
+
+The most common data encodings that are human-readable are ASCII and Unicode
+
+In this example, we can see:
+
+cd inhere
+bandit4@bandit:~/inhere$  ls -al
+total 48
+drwxr-xr-x 2 root    root    4096 Aug 15 13:16 .
+drwxr-xr-x 3 root    root    4096 Aug 15 13:16 ..
+-rw-r----- 1 bandit5 bandit4   33 Aug 15 13:16 -file00
+-rw-r----- 1 bandit5 bandit4   33 Aug 15 13:16 -file01
+-rw-r----- 1 bandit5 bandit4   33 Aug 15 13:16 -file02
+-rw-r----- 1 bandit5 bandit4   33 Aug 15 13:16 -file03
+-rw-r----- 1 bandit5 bandit4   33 Aug 15 13:16 -file04
+-rw-r----- 1 bandit5 bandit4   33 Aug 15 13:16 -file05
+-rw-r----- 1 bandit5 bandit4   33 Aug 15 13:16 -file06
+-rw-r----- 1 bandit5 bandit4   33 Aug 15 13:16 -file07
+-rw-r----- 1 bandit5 bandit4   33 Aug 15 13:16 -file08
+-rw-r----- 1 bandit5 bandit4   33 Aug 15 13:16 -file09
+
+If we want to apply/use a command on all the files in the current directory, 
+repeating the command or writing all filenames is tedious. 
+To use the command on all the files in the directory without a lot of writing, 
+we can use ‘*’, which is called a ‘wildcard symbol’. ‘*’ can stand for any number of any literal characters.
+
+SOLUTION
+
+file ./-*
+
+bandit4@bandit:~/inhere$  file ./-*
+./-file00: data
+./-file01: data
+./-file02: data
+./-file03: data
+./-file04: data
+./-file05: data
+./-file06: data
+./-file07: ASCII text
+./-file08: data
+./-file09: data
+
+or 
+find -type f  | xargs file
+
+We can see that only ‘-file07’ is of type ‘ASCII text’, which is one of the encodings, that humans can read.
+
+bandit4@bandit:~/inhere$ cat ./-file07 
+4oQYVPkxZOOEOO5pTW81FB8j8lxXGUQw
