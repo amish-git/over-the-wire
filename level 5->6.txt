@@ -1,0 +1,36 @@
+Level Goal
+The password for the next level is stored in a file somewhere under the inhere directory and has all of the following properties:
+
+human-readable
+1033 bytes in size
+not executable
+Commands you may need to solve this level
+ls , cd , cat , file , du , find
+
+
+For finding non-executable files, the find command can be used. It has the -executable flag, which searches for executable files and allows operators like ‘!’ for negation.
+
+Some additional interesting flags for find:
+
+It has a flag for looking at file size in bytes -size <bytes>.
+It also has the option to only look at files -type f (no directories/non-executables).
+It has a -readable flag, but this means you have the permission to read the files, not that they are human-readable.
+Instead, we could use the -exec <command> flag with '{}' as a path, meaning the chosen command will be executed on all the files. 
+This could be used to execute another command like file.
+
+
+SOLUTION:
+
+bandit5@bandit:~$  cd inhere
+
+bandit5@bandit:~/inhere$  ls
+maybehere00  maybehere03  maybehere06  maybehere09  maybehere12  maybehere15  maybehere18
+maybehere01  maybehere04  maybehere07  maybehere10  maybehere13  maybehere16  maybehere19
+maybehere02  maybehere05  maybehere08  maybehere11  maybehere14  maybehere17
+
+find . -type f -size 1033c ! -executable -exec file '{}' \; | grep ASCII
+OR
+bandit5@bandit:~/inhere$ find . -type f -size 1033c 
+./maybehere07/.file2
+
+cat ./maybehere07/.file2
