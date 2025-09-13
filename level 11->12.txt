@@ -1,0 +1,16 @@
+Level Goal
+The password for the next level is stored in the file data.txt, where all lowercase (a-z) and uppercase (A-Z) letters have been rotated by 13 positions
+
+Commands you may need to solve this level
+grep, sort, uniq, strings, base64, tr, tar, gzip, bzip2, xxd
+
+Helpful Reading Material
+Rot13 on Wikipedia
+
+SOLUTION:
+
+tr => The tr command is a UNIX command-line utility for translating or deleting characters. 
+It supports a range of transformations including uppercase to lowercase, squeezing repeating characters, deleting specific characters, and basic find and replace.
+
+cat data.txt
+echo " your's_data.txt_value" | tr '[A-Za-z]' '[N-ZA-Mn-za-m]' 
